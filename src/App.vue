@@ -6,7 +6,7 @@
       :EverClickHandler="clickHandlers"
     ></BtnCard>
     <button @click="clickAppHandler">{{ clickApp }}</button>
-    <ListUser :users="user" @deleteItem="removeUser($e)"></ListUser>
+    <ListUser :users="user" @deleteItem="removeUser($event)"></ListUser>
   </div>
 </template>
 
@@ -26,14 +26,17 @@ export default {
     return {
       clickApp: "click app",
       user: [
-        { name: "mahdi", age: 22, id:1 },
-        { name: "sara", age: 24, id:2 },
+        { name: "mahdi", age: 22, id: 1 },
+        { name: "sara", age: 24, id: 2 },
       ],
     };
   },
   methods: {
     removeUser(id) {
-      console.log(id);
+     let userItem = this.user.findIndex((item) => item.id == id);
+      // console.log(user);
+      this.user.splice(userItem , 1)
+      console.log(userItem)
     },
     clickAppHandler: function () {
       this.clickApp = "app";
