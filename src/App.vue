@@ -1,48 +1,60 @@
 <template>
-  <div id="app">  
+  <div id="app">
     <CardShow color="white" message="this is test"></CardShow>
-    <BtnCard @changeEmitHandlerFunc="changeEmit($event)" :EverClickHandler="clickHandlers"></BtnCard>
-    <button @click="clickAppHandler" >{{ clickApp }}</button>
+    <BtnCard
+      @changeEmitHandlerFunc="changeEmit($event)"
+      :EverClickHandler="clickHandlers"
+    ></BtnCard>
+    <button @click="clickAppHandler">{{ clickApp }}</button>
+    <ListUser :users="user" @deleteItem="removeUser($e)"></ListUser>
   </div>
-  
 </template>
 
 <script>
-import CardShow from './components/ShowCard'
-import BtnCard from './components/Button'
+import CardShow from "./components/ShowCard";
+import BtnCard from "./components/Button";
+import ListUser from "./components/ListUser";
 
 export default {
-  name: 'App',
-  components: {    
+  name: "App",
+  components: {
     CardShow,
-    BtnCard
+    BtnCard,
+    ListUser,
   },
-  data(){
-    return{
-      clickApp : "click app"
-    }
+  data() {
+    return {
+      clickApp: "click app",
+      user: [
+        { name: "mahdi", age: 22, id:1 },
+        { name: "sara", age: 24, id:2 },
+      ],
+    };
   },
-  methods:{
-    clickAppHandler : function(){
-      this.clickApp  = "app"
+  methods: {
+    removeUser(id) {
+      console.log(id);
     },
-    clickHandlers : function(){
-      alert("mahdi")
+    clickAppHandler: function () {
+      this.clickApp = "app";
     },
-    changeEmit:function(data){
-      console.log(data)
-    }  
+    clickHandlers: function () {
+      alert("mahdi");
+    },
+    changeEmit: function (data) {
+      console.log(data);
+    },
   },
-  beforeUpdate(){
-    console.log("mahdiapp")
+  beforeUpdate() {
+    console.log("mahdiapp");
   },
-  updated(){
-    console.log("mahdiapp2")
-  }
-}
+  updated() {
+    console.log("mahdiapp2");
+  },
+};
 </script>
- 
-<style>
+
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
