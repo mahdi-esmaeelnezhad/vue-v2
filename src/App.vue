@@ -1,21 +1,47 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">  
+    <CardShow color="white" message="this is test"></CardShow>
+    <BtnCard @changeEmitHandlerFunc="changeEmit($event)" :EverClickHandler="clickHandlers"></BtnCard>
+    <button @click="clickAppHandler" >{{ clickApp }}</button>
   </div>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CardShow from './components/ShowCard'
+import BtnCard from './components/Button'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: {    
+    CardShow,
+    BtnCard
+  },
+  data(){
+    return{
+      clickApp : "click app"
+    }
+  },
+  methods:{
+    clickAppHandler : function(){
+      this.clickApp  = "app"
+    },
+    clickHandlers : function(){
+      alert("mahdi")
+    },
+    changeEmit:function(data){
+      console.log(data)
+    }  
+  },
+  beforeUpdate(){
+    console.log("mahdiapp")
+  },
+  updated(){
+    console.log("mahdiapp2")
   }
 }
 </script>
-
+ 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
