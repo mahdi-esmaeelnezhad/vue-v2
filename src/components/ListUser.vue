@@ -6,7 +6,9 @@
       <button @click="delete(item.id)">remove</button> -->
       <li v-for="item in users" :key="item.id">
         <p>{{ item.name }}</p>
-        <button @click="deleteUser(item.id)">remove</button>
+        <button v-color="item.color" @click="deleteUser(item.id)">
+          remove
+        </button>
       </li>
     </ul>
   </div>
@@ -23,6 +25,13 @@ export default {
   methods: {
     deleteUser(id) {
       this.$emit("deleteItem", id);
+    },
+  },
+  directives: {
+    color: {
+      bind(el, binding) {
+        el.style.backgroundColor = binding.value;
+      },
     },
   },
 };

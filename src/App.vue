@@ -26,8 +26,8 @@ export default {
     return {
       clickApp: "click app",
       user: [
-        { name: "mahdi", age: 22, id: 1 },
-        { name: "sara", age: 24, id: 2 },
+        { name: "mahdi", age: 22, id: 1, color : "red" },
+        { name: "sara", age: 24, id: 2, color : "green" },
       ],
     };
   },
